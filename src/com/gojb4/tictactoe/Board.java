@@ -76,6 +76,10 @@ public class Board {
 		return 0;
 	}
 
+	public boolean hasWin(int player) {
+		return (getWin() == player); 
+	}
+	
 	public int isGameOver() {
 		int win = getWin();
 		if (win == PLAYER_X) {
