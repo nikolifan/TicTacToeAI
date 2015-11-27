@@ -17,7 +17,7 @@ public class RomanAI extends CustomAI {
 		if (board.isEmpty()) {
 			maxIndex = (int) (Math.random() * board.getBoard().length);
 		} else {
-			int res = benefitsOfProgress(board, getPlayer(), 0);
+			int res = minimax(board, getPlayer(), 0);
 			maxIndex = res - cutOffMove(res);
 		}
 		board.setMove(maxIndex, getPlayer());
@@ -31,7 +31,7 @@ public class RomanAI extends CustomAI {
 		return ((int) (i / RATIO)) * RATIO;
 	}
 
-	private int benefitsOfProgress(Board board, int player, int depth) {
+	private int minimax(Board board, int player, int depth) {
 		if (board.hasWin(Board.PLAYER_X)) {
 			return X_WIN;
 		} else if (board.hasWin(Board.PLAYER_O)) {
@@ -48,7 +48,7 @@ public class RomanAI extends CustomAI {
 		}
 		for (int i : board.getAvailableMoves()) {
 			board.setMove(i, player);
-			int enemyVal = benefitsOfProgress(board, -player, depth + 1);
+			int enemyVal = minimax(board, -player, depth + 1);
 			// System.out.println("player = " + player + ", move = " + i + ", resVal = " + resVal + ", enemyVal = " + enemyVal + ", depth = " + depth);
 			if (((player == Board.PLAYER_X) && (cutOffMove(enemyVal) > cutOffMove(resVal)))
 					|| ((player == Board.PLAYER_O) && (cutOffMove(enemyVal) < cutOffMove(resVal)))) {
