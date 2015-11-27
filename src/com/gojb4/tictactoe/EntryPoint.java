@@ -35,9 +35,9 @@ public class EntryPoint {
 
 		int end = board.isGameOver();
 		if (end == Board.PLAYER_X_WON)
-			System.out.println("\n Player X WON!");
+			System.out.println("\n Player X won!");
 		if (end == Board.PLAYER_O_WON)
-			System.out.println("\n Player O WON!");
+			System.out.println("\n Player O won!");
 		if (end == Board.DRAWN_GAME)
 			System.out.println("\n Drawn game!");
 
