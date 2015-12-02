@@ -45,6 +45,7 @@ public class KossAI extends CustomAI {
 			board.setMove(i, player);
 			Node opp = minimax(board, -player);
 			board.setMove(i, 0);
+			System.out.println("i = " + i + ", enemy = " + opp.score);
 			if ((player * opp.score) > (player * best.score)) {
 				best.index = i;
 				best.score = opp.score;
